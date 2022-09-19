@@ -1,6 +1,6 @@
 {
   "name": "zeddy-config",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Configuration alternative for NestJS",
   "author": "Zlatibor Veljković",
   "license": "The Unlicense",
@@ -10,7 +10,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p tsconfig.esm.json & tsc -p tsconfig.cjs.json & node fixup.js",
-    "publish:local": "npm pack --pack-destination"
+    "publish:local": "npm pack --pack-destination",
+    "prepare": "npm run build",
+    "prepublishOnly": "",
+    "preversion": "",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "main": "dist/cjs/zeddy-config.js",
   "module": "dist/esm/zeddy-config.js",

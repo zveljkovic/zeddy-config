@@ -1,11 +1,10 @@
 # Zeddy Config
 Zeddy config is a simple configuration library inspired by `convict` built in TypeScript. 
-It closely follows suggestions written in my book 'Pragmatic Node.js development: Primer in NestJS'.
-It also follows the suggestions from [The Twelve-Factor App](https://12factor.net/config) for configuring variables via environment variables 
+It closely follows suggestions written in my upcoming book 'Pragmatic Node.js development: Primer in NestJS'.
+It also follows the suggestions from [The Twelve-Factor App](https://12factor.net/config) for configuring variables via environment variables. 
 
 ### Usage
-In `config.ts` write your schema. As this library is written in TypeScript it will
-autocomplete the available fields (they depend on `type` property). Full interface of options are given below
+In `config.ts` write your schema. Full interface of options are given in Interfaces section.
 
 ```
 import { configz, dotenvize } from "zeddy-config";
@@ -38,10 +37,14 @@ export const config = configz({
     }
   }
 });
+
+// resulting config interface is {env: string; server: {port: number; host: string}}
 ```
 If you want to use .env files with overrides per NODE_ENV environment variable you can call `dotenvize()` before
 `configz()` to load all necessary environment variables from `.env` file and `.env.${process.env.NODE_ENV}`files.
 
+### Example project
+Example project can be found on [https://github.com/zveljkovic/zeddy-config-example](https://github.com/zveljkovic/zeddy-config-example).
 
 ### Interfaces
 String value interface expects environment variable in any format.
